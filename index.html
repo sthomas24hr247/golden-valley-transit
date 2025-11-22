@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Valley Transit - Non-Emergency Medical Transportation | Bakersfield, CA</title>
+    <meta name="description" content="Golden Valley Transit provides reliable, compassionate non-emergency medical transportation services throughout Kern County. Wheelchair accessible vehicles, 24/7 availability.">
+    <meta name="keywords" content="NEMT, medical transportation, Bakersfield, Kern County, wheelchair transport, dialysis transportation, medical appointments">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            border: 2px solid #667eea;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23667eea" width="1200" height="600"/><path fill="%23764ba2" opacity="0.1" d="M0 300L50 325L100 300L150 325L200 300L250 325L300 300L350 325L400 300L450 325L500 300L550 325L600 300L650 325L700 300L750 325L800 300L850 325L900 300L950 325L1000 300L1050 325L1100 300L1150 325L1200 300V600H0Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Coming Soon Banner Styles */
+        .announcement-banner {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #1f2937;
+            padding: 1rem 0;
+            text-align: center;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 72px;
+            z-index: 40;
+            animation: slideDown 0.5s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .announcement-banner .banner-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .announcement-banner .banner-content {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+        
+        .announcement-banner .rocket-icon {
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .disabled-section {
+            opacity: 0.6;
+            pointer-events: none;
+            position: relative;
+        }
+        
+        .coming-soon-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            z-index: 10;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center">
+                        <i class="fas fa-van-shuttle text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Golden Valley Transit</h1>
+                        <p class="text-xs text-gray-600">Professional Medical Transportation</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#services" class="text-gray-700 hover:text-purple-600 font-medium transition">Services</a>
+                    <a href="about.html" class="text-gray-700 hover:text-purple-600 font-medium transition">About</a>
+                    <a href="#contact" class="text-gray-700 hover:text-purple-600 font-medium transition">Contact</a>
+                    <a href="tel:+18773786368" class="btn-primary">
+                        <i class="fas fa-phone mr-2"></i>Call Now
+                    </a>
+                </div>
+                
+                <button class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Announcement Banner -->
+    <div class="announcement-banner">
+        <div class="container mx-auto px-6">
+            <div class="banner-content">
+                <span class="rocket-icon">🚀</span>
+                <span class="text-base md:text-lg">
+                    ONLINE BOOKING PORTAL LAUNCHING SUMMER 2026
+                </span>
+                <span class="hidden md:inline">|</span>
+                <span class="text-sm md:text-base font-normal">
+                    For now, please call us 24/7 at <a href="tel:+18773786368" class="underline hover:text-gray-900 font-bold">(877) 378-NEMT</a> for scheduling
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-white py-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h2 class="text-5xl font-bold mb-6 leading-tight">
+                        Caring Transport for<br>
+                        <span class="text-yellow-300">the Central Valley</span>
+                    </h2>
+                    <p class="text-xl mb-8 text-gray-100">
+                        Professional, compassionate non-emergency medical transportation serving Bakersfield and Kern County. Available 24/7 for your healthcare needs.
+                    </p>
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-4 mb-8">
+                        <p class="text-lg font-semibold text-yellow-300">
+                            <i class="fas fa-phone-alt mr-2"></i>Need a ride today? Call us now for immediate assistance!
+                        </p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="tel:+18773786368" class="btn-primary text-center">
+                            <i class="fas fa-phone mr-2"></i>Call (877) 378-NEMT
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-2xl p-8 max-w-md">
+                        <div class="text-center mb-4">
+                            <div class="w-20 h-20 bg-white bg-opacity-30 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-heart-pulse text-white text-3xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Your Health, Our Priority</h3>
+                            <p class="text-gray-100">Trusted by healthcare providers across Kern County</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-wheelchair text-yellow-300 text-xl"></i>
+                                <span class="text-white">Wheelchair Accessible</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-clock text-yellow-300 text-xl"></i>
+                                <span class="text-white">24/7 Availability</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-shield-alt text-yellow-300 text-xl"></i>
+                                <span class="text-white">Fully Insured & Licensed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Services</h2>
+                <p class="text-xl text-gray-600">Comprehensive medical transportation solutions tailored to your needs</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="service-card hover-lift">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-wheelchair text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Wheelchair Accessible</h3>
+                    <p class="text-gray-600 text-center">
+                        Fully equipped wheelchair-accessible vehicles with certified securement systems for safe, comfortable transport.
+                    </p>
+                </div>
+                
+                <div class="service-card hover-lift">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-hospital text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Medical Appointments</h3>
+                    <p class="text-gray-600 text-center">
+                        Reliable transportation to doctor visits, dialysis, physical therapy, and all medical appointments.
+                    </p>
+                </div>
+                
+                <div class="service-card hover-lift">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-user-nurse text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Non-Emergency</h3>
+                    <p class="text-gray-600 text-center">
+                        Professional NEMT services for patients requiring medical transport without emergency intervention.
+                    </p>
+                </div>
+                
+                <div class="service-card hover-lift">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-file-invoice-dollar text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 text-center">Insurance Accepted</h3>
+                    <p class="text-gray-600 text-center">
+                        We accept Medi-Cal, Medicare, and most major insurance plans. Direct billing available.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Why Choose Golden Valley Transit?</h2>
+                <p class="text-xl text-gray-600">Excellence in every journey</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div class="text-center">
+                    <div class="stat-number">15+</div>
+                    <p class="text-gray-700 font-semibold">Years of Experience</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number">99.9%</div>
+                    <p class="text-gray-700 font-semibold">Safety Record</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number">98%</div>
+                    <p class="text-gray-700 font-semibold">Customer Satisfaction</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number">24/7</div>
+                    <p class="text-gray-700 font-semibold">Service Coverage</p>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-white rounded-2xl p-8 shadow-md">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Our Commitment to You</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 text-xl mr-3 mt-1"></i>
+                            <div>
+                                <span class="font-semibold text-gray-800">Professional Drivers:</span>
+                                <span class="text-gray-600"> All drivers are CPR certified, background checked, and trained in patient care</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 text-xl mr-3 mt-1"></i>
+                            <div>
+                                <span class="font-semibold text-gray-800">Modern Fleet:</span>
+                                <span class="text-gray-600"> Clean, well-maintained vehicles with latest safety equipment</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 text-xl mr-3 mt-1"></i>
+                            <div>
+                                <span class="font-semibold text-gray-800">On-Time Service:</span>
+                                <span class="text-gray-600"> 95% on-time rate - we understand medical appointments can't wait</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 text-xl mr-3 mt-1"></i>
+                            <div>
+                                <span class="font-semibold text-gray-800">HIPAA Compliant:</span>
+                                <span class="text-gray-600"> Your privacy and medical information are always protected</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-md">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Service Area</h3>
+                    <p class="text-gray-600 mb-6">Proudly serving:</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-map-marker-alt text-purple-600 mr-3"></i>
+                            Bakersfield and surrounding areas
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-map-marker-alt text-purple-600 mr-3"></i>
+                            All of Kern County
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fas fa-map-marker-alt text-purple-600 mr-3"></i>
+                            Extended trips throughout California
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-6 bg-purple-50 rounded-lg p-4">
+                        <p class="text-sm text-gray-700">
+                            <i class="fas fa-info-circle text-purple-600 mr-2"></i>
+                            <span class="font-semibold">Extended Coverage:</span> We can arrange transportation to specialized medical facilities throughout California.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Get in Touch</h2>
+                <p class="text-xl text-gray-600">We're here to help with your transportation needs</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <!-- Contact Information -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-1">Address</h4>
+                                <p class="text-gray-600">1234 Medical Center Dr<br>Bakersfield, CA 93301</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-1">Phone</h4>
+                                <a href="tel:+18773786368" class="text-purple-600 hover:text-purple-700 font-bold text-lg">
+                                    (877) 378-NEMT
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-1">Email</h4>
+                                <a href="/cdn-cgi/l/email-protection#b9d0d7dfd6f9ded6d5dddcd7cfd8d5d5dcc0cdcbd8d7cad0cd97dad6d4" class="text-purple-600 hover:text-purple-700">
+                                    <span class="__cf_email__" data-cfemail="dfb6b1b9b09fb8b0b3bbbab1a9beb3b3baa6abadbeb1acb6abf1bcb0b2">[email&#160;protected]</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-clock text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-1">Hours</h4>
+                                <p class="text-gray-600">Available 24/7<br>Emergency on-call service always available</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form - Disabled with Coming Soon Message -->
+                <div class="relative">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Schedule Your Ride</h3>
+                    
+                    <div class="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg p-8 space-y-6 disabled-section">
+                        <!-- Coming Soon Overlay -->
+                        <div class="coming-soon-overlay">
+                            <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-rocket text-white text-2xl"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-gray-800 mb-3">Coming Summer 2026</h4>
+                            <p class="text-gray-700 mb-4">Online booking portal launching soon!</p>
+                            <div class="space-y-3">
+                                <p class="text-gray-700 font-semibold">For now, please call us:</p>
+                                <a href="tel:+18773786368" class="btn-primary text-center block py-3 text-lg">
+                                    <i class="fas fa-phone mr-2"></i>(877) 378-NEMT
+                                </a>
+                                <p class="text-sm text-gray-600">Available 24/7 for all scheduling needs</p>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-20 h-20 gradient-bg rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-file-alt text-white text-3xl"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-3">Ready to Schedule Your Ride?</h4>
+                            <p class="text-gray-700 mb-6">
+                                Fill out our contact form and someone will reach out to you shortly to arrange your transportation.
+                            </p>
+                        </div>
+                        
+                        <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=XEPx8hgMtUShdN8eXI0YFce7RiphDRJEq-HPsNDjnZFUMTZTSFFQU0c4RlVWUElBTUpKTEdaVU5UTS4u" 
+                           target="_blank"
+                           class="w-full btn-primary text-center block py-4 text-lg">
+                            <i class="fas fa-external-link-alt mr-2"></i>Open Contact Form
+                        </a>
+                        
+                        <div class="text-center text-sm text-gray-600 flex items-center justify-center gap-2">
+                            <i class="fas fa-shield-alt text-green-600"></i> 
+                            <span>Secure Microsoft Forms - Your information is protected</span>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-6 space-y-3">
+                            <p class="text-gray-700 font-semibold text-center">
+                                What to expect:
+                            </p>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                    Quick 2-minute form
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                    Prompt response from our team
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                    No obligation quote
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 pt-6 border-t border-gray-300">
+                        <p class="text-gray-700 text-center mb-4 font-semibold">
+                            Prefer to contact us directly?
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a href="tel:8773786368" class="flex-1 btn-secondary text-center py-3">
+                                <i class="fas fa-phone mr-2"></i>Call (877) 378-NEMT
+                            </a>
+                            <div class="flex-1 bg-white border-2 border-purple-600 rounded-lg py-3 px-4 text-center">
+                                <i class="fas fa-envelope text-purple-600 mr-2"></i>
+                                <span class="text-purple-600 font-semibold"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1e777078715e7971727a7b70687f72727b676a6c7f706d776a307d7173">[email&#160;protected]</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                            <i class="fas fa-van-shuttle text-purple-600 text-lg"></i>
+                        </div>
+                        <span class="text-xl font-bold">Golden Valley Transit</span>
+                    </div>
+                    <p class="text-gray-200 text-sm">
+                        Providing professional, compassionate non-emergency medical transportation services throughout Kern County since 2010.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="text-gray-200 hover:text-white transition">Services</a></li>
+                        <li><a href="about.html" class="text-gray-200 hover:text-white transition">About Us</a></li>
+                        <li><a href="#contact" class="text-gray-200 hover:text-white transition">Contact</a></li>
+                        <li><a href="privacy.html" class="text-gray-200 hover:text-white transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-gray-200">
+                        <li><i class="fas fa-phone mr-2"></i>(877) 378-NEMT</li>
+                        <li><i class="fas fa-envelope mr-2"></i><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="81e8efe7eec1e6eeede5e4eff7e0edede4f8f5f3e0eff2e8f5afe2eeec">[email&#160;protected]</a></li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>Bakersfield, CA 93301</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white border-opacity-20 mt-8 pt-8 text-center text-gray-200 text-sm">
+                <p>&copy; 2025 Golden Valley Transit. All rights reserved. | Licensed & Insured NEMT Provider</p>
+            </div>
+        </footer>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-stati
