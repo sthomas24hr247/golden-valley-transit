@@ -591,13 +591,14 @@
                 const result = await response.json();
                 
                 if (result.success) {
-                    let successText = `Trip Number: ${result.trip_number}<br>`;
-                    if (result.portal_credentials) {
+                    let successText = `Trip ID: ${result.trip_id}<br>`;
+                    if (result.username && result.temporary_password) {
                         successText += `<br><strong>Portal Access Created:</strong><br>`;
-                        successText += `Username: ${result.portal_credentials.username}<br>`;
-                        successText += `Password: ${result.portal_credentials.password}<br>`;
+                        successText += `Username: ${result.username}<br>`;
+                        successText += `Temporary Password: ${result.temporary_password}<br>`;
+                        successText += `Portal URL: ${result.portal_url}<br>`;
                     }
-                    successText += `<br>We'll contact you shortly to confirm your appointment.`;
+                    successText += `<br>${result.message || "We'll contact you shortly to confirm your appointment."}`;
                     
                     document.getElementById('successText').innerHTML = successText;
                     successMessage.style.display = 'block';
