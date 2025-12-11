@@ -3,160 +3,451 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - NEMT System</title>
-    <meta name="description" content="Privacy Policy for NEMT System - How we collect, use, and protect your information.">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Privacy Policy - Golden Valley Transit | Professional Medical Transportation</title>
+    <meta name="description" content="Privacy Policy for Golden Valley Transit - Learn how we protect your personal and health information.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .hero-gradient { background: linear-gradient(135deg, #1e6bb8 0%, #2dd4bf 100%); }
-        .btn-primary { background: #1e6bb8; color: white; font-weight: 600; padding: 14px 28px; border-radius: 8px; transition: all 0.3s ease; }
-        .btn-primary:hover { background: #1a5a9e; transform: translateY(-2px); }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+        
+        .logo-text span {
+            font-size: 0.75rem;
+            color: #667eea;
+            font-weight: 500;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .cta-button i {
+            font-size: 1.1rem;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            padding: 140px 2rem 80px;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Content */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 2rem;
+        }
+        
+        .content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .content p {
+            color: #4a5568;
+            margin-bottom: 1rem;
+        }
+        
+        .content ul {
+            color: #4a5568;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+        
+        .content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .content strong {
+            color: #1a1a2e;
+        }
+        
+        .last-updated {
+            background: #f8fafc;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+        
+        .hipaa-notice {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+        
+        .hipaa-notice h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .hipaa-notice p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 0;
+        }
+        
+        .contact-box {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+        
+        .contact-box h3 {
+            font-size: 1.1rem;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-box p {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+            color: white;
+            padding: 60px 2rem 30px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.75rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-section p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 40px 1rem;
+            }
+        }
     </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-gray-900">NEMT<span class="text-blue-600">System</span></a>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html#who-we-serve" class="text-gray-600 hover:text-gray-900">Solutions</a>
-                <a href="index.html#features" class="text-gray-600 hover:text-gray-900">Features</a>
-                <a href="pricing.html" class="text-gray-600 hover:text-gray-900">Pricing</a>
-                <a href="contact.html" class="btn-primary text-sm px-5 py-2.5 inline-block">Book a Demo</a>
-            </div>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shuttle-van"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Golden Valley Transit</h1>
+                    <span>Professional Medical Transportation</span>
+                </div>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html#services">Services</a>
+                <a href="about.html">About</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="tel:+18773786368" class="cta-button">
+                    <i class="fas fa-phone"></i> Call (877) 378-NEMT
+                </a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero -->
-    <section class="hero-gradient pt-32 pb-16 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Privacy Policy</h1>
-            <p class="text-xl text-white/90">Last updated: December 9, 2025</p>
-        </div>
+    <section class="hero">
+        <h1>Privacy Policy</h1>
+        <p>Your privacy and the security of your health information is our priority.</p>
     </section>
 
     <!-- Content -->
-    <section class="py-16 px-6">
-        <div class="max-w-4xl mx-auto">
-            <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 space-y-8">
-                
-                <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Introduction</h2>
-                    <p class="text-gray-600 leading-relaxed">NEMT System ("we," "our," or "us"), operated by My IT Copilot, is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.</p>
-                </div>
-
-                <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Information We Collect</h2>
-                    <p class="text-gray-600 leading-relaxed mb-4">We may collect information about you in a variety of ways, including:</p>
-                    <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
-                        <li><strong>Personal Data:</strong> Name, email address, phone number, company name, and job title when you contact us or request a demo.</li>
-                        <li><strong>Business Information:</strong> Information about your organization's size, operations, and transportation needs.</li>
-                        <li><strong>Usage Data:</strong> Information about how you interact with our website, including IP address, browser type, and pages visited.</li>
-                        <li><strong>Cookies:</strong> We use cookies and similar tracking technologies to enhance your experience on our website.</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">How We Use Your Information</h2>
-                    <p class="text-gray-600 leading-relaxed mb-4">We use the information we collect to:</p>
-                    <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
-                        <li>Respond to your inquiries and provide customer support</li>
-                        <li>Schedule and conduct product demonstrations</li>
-                        <li>Send you information about our products and services</li>
-                        <li>Improve our website and services</li>
-                        <li>Comply with legal obligations</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">HIPAA Compliance</h2>
-                    <p class="text-gray-600 leading-relaxed">Our NEMT platform is designed to be HIPAA-compliant. When deployed for our clients, all Protected Health Information (PHI) is stored in the client's own Azure environment, ensuring they maintain full control and ownership of their data. We do not store or have access to PHI on our marketing website.</p>
-                </div>
-
-                <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Data Security</h2>
-                    <p class="text-gray-600 leading-relaxed">We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure.</p>
-                </div>
-
-                <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Third-Party Services</h2>
-                    <p class="text-gray-600 leading-relaxed">We may use third-party services for analytics, email communications, and form processing. These services may collect information sent by your browser as part of a web page request. Their use of this information is governed by their respective privacy policies.</p>
-                </div>
-
-                <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Your Rights</h2>
-                    <p class="text-gray-600 leading-relaxed mb-4">Depending on your location, you may have certain rights regarding your personal information, including:</p>
-                    <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
-                        <li>The right to access your personal information</li>
-                        <li>The right to correct inaccurate information</li>
-                        <li>The right to request deletion of your information</li>
-                        <li>The right to opt-out of marketing communications</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">California Privacy Rights</h2>
-                    <p class="text-gray-600 leading-relaxed">If you are a California resident, you have specific rights under the California Consumer Privacy Act (CCPA) regarding your personal information. Please contact us to exercise these rights.</p>
-                </div>
-
-                <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Changes to This Policy</h2>
-                    <p class="text-gray-600 leading-relaxed">We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
-                </div>
-
-                <div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Contact Us</h2>
-                    <p class="text-gray-600 leading-relaxed mb-4">If you have questions about this Privacy Policy or our privacy practices, please contact us at:</p>
-                    <div class="bg-gray-50 rounded-lg p-6">
-                        <p class="text-gray-700"><strong>NEMT System</strong></p>
-                        <p class="text-gray-600">Powered by My IT Copilot</p>
-                        <p class="text-gray-600 mt-2"><i class="fas fa-envelope mr-2"></i>info@nemtsystem.com</p>
-                        <p class="text-gray-600"><i class="fas fa-phone mr-2"></i>(661) 555-0123</p>
-                        <p class="text-gray-600"><i class="fas fa-map-marker-alt mr-2"></i>Bakersfield, California</p>
-                    </div>
-                </div>
-
-            </div>
+    <div class="content">
+        <div class="last-updated">
+            <strong>Last Updated:</strong> December 10, 2025
         </div>
-    </section>
+
+        <div class="hipaa-notice">
+            <h3><i class="fas fa-shield-alt"></i> HIPAA Compliant</h3>
+            <p>Golden Valley Transit is committed to protecting your Protected Health Information (PHI) in accordance with the Health Insurance Portability and Accountability Act (HIPAA) and California state privacy laws.</p>
+        </div>
+
+        <h2>1. Introduction</h2>
+        <p>Golden Valley Transit ("we," "our," or "us") provides non-emergency medical transportation services in Bakersfield and Kern County, California. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our transportation services.</p>
+
+        <h2>2. Information We Collect</h2>
+        <p>We may collect the following types of information:</p>
+        <ul>
+            <li><strong>Personal Information:</strong> Name, address, phone number, email address, date of birth</li>
+            <li><strong>Health Information:</strong> Medical conditions relevant to transportation needs, mobility requirements, special assistance needs</li>
+            <li><strong>Insurance Information:</strong> Medi-Cal, Medicare, or private insurance details for billing purposes</li>
+            <li><strong>Transportation Details:</strong> Pickup and drop-off locations, appointment times, healthcare provider information</li>
+            <li><strong>Emergency Contact Information:</strong> Names and phone numbers of designated emergency contacts</li>
+        </ul>
+
+        <h2>3. How We Use Your Information</h2>
+        <p>We use the information we collect to:</p>
+        <ul>
+            <li>Provide safe and appropriate medical transportation services</li>
+            <li>Coordinate with healthcare providers regarding your appointments</li>
+            <li>Process insurance claims and billing</li>
+            <li>Communicate with you about scheduled rides</li>
+            <li>Ensure driver safety and passenger assistance requirements</li>
+            <li>Comply with legal and regulatory requirements</li>
+            <li>Improve our services and customer experience</li>
+        </ul>
+
+        <h2>4. HIPAA Compliance</h2>
+        <p>As a provider of medical transportation services, we are committed to protecting your Protected Health Information (PHI) in accordance with HIPAA regulations:</p>
+        <ul>
+            <li>We limit access to PHI to authorized personnel only</li>
+            <li>We use administrative, physical, and technical safeguards to protect your information</li>
+            <li>We train all employees on HIPAA privacy and security requirements</li>
+            <li>We maintain Business Associate Agreements with all partners who access PHI</li>
+            <li>We never sell or share your health information for marketing purposes</li>
+        </ul>
+
+        <h2>5. Information Sharing and Disclosure</h2>
+        <p>We may share your information with:</p>
+        <ul>
+            <li><strong>Healthcare Providers:</strong> To coordinate your transportation to and from medical appointments</li>
+            <li><strong>Insurance Companies:</strong> For claims processing and payment</li>
+            <li><strong>Our Drivers:</strong> Limited information necessary to provide safe transportation</li>
+            <li><strong>Emergency Services:</strong> If there is a medical emergency during transport</li>
+            <li><strong>Legal Authorities:</strong> When required by law or to protect safety</li>
+        </ul>
+
+        <h2>6. Data Security</h2>
+        <p>We implement appropriate security measures to protect your personal and health information:</p>
+        <ul>
+            <li>Encrypted data transmission and storage</li>
+            <li>Secure access controls and authentication</li>
+            <li>Regular security assessments and updates</li>
+            <li>Employee background checks and training</li>
+            <li>Physical security of records and devices</li>
+        </ul>
+
+        <h2>7. Your Rights</h2>
+        <p>Under HIPAA and California law, you have the right to:</p>
+        <ul>
+            <li><strong>Access:</strong> Request copies of your health information</li>
+            <li><strong>Amendment:</strong> Request corrections to inaccurate information</li>
+            <li><strong>Accounting:</strong> Request a list of disclosures of your health information</li>
+            <li><strong>Restriction:</strong> Request restrictions on certain uses of your information</li>
+            <li><strong>Confidential Communications:</strong> Request alternative communication methods</li>
+            <li><strong>Complaint:</strong> File a complaint if you believe your privacy rights have been violated</li>
+        </ul>
+
+        <h2>8. California Privacy Rights</h2>
+        <p>California residents have additional rights under the California Consumer Privacy Act (CCPA):</p>
+        <ul>
+            <li>Right to know what personal information is collected</li>
+            <li>Right to know whether personal information is sold or disclosed</li>
+            <li>Right to opt-out of the sale of personal information</li>
+            <li>Right to request deletion of personal information</li>
+            <li>Right to non-discrimination for exercising privacy rights</li>
+        </ul>
+        <p>Note: We do not sell personal information to third parties.</p>
+
+        <h2>9. Data Retention</h2>
+        <p>We retain your information for as long as necessary to provide our services and comply with legal requirements. Medical transportation records are retained for a minimum of seven (7) years in accordance with California regulations.</p>
+
+        <h2>10. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy on our website and updating the "Last Updated" date.</p>
+
+        <h2>11. Contact Us</h2>
+        <p>If you have questions about this Privacy Policy or wish to exercise your privacy rights, please contact us:</p>
+        
+        <div class="contact-box">
+            <h3>Golden Valley Transit Privacy Office</h3>
+            <p><i class="fas fa-phone"></i> <strong>Phone:</strong> (877) 378-NEMT</p>
+            <p><i class="fas fa-envelope"></i> <strong>Email:</strong> privacy@goldenvalleytransit.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> Bakersfield, CA 93301</p>
+        </div>
+
+        <p style="margin-top: 2rem; font-size: 0.9rem; color: #718096;">To file a HIPAA complaint, you may also contact the U.S. Department of Health and Human Services Office for Civil Rights at <a href="https://www.hhs.gov/ocr" style="color: #667eea;">www.hhs.gov/ocr</a>.</p>
+    </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <div class="text-2xl font-bold mb-4">NEMT<span class="text-blue-400">System</span></div>
-                    <p class="text-gray-400">The modern NEMT operating system for brokers, providers, and healthcare systems.</p>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo" style="margin-bottom: 1rem;">
+                    <div class="logo-icon">
+                        <i class="fas fa-shuttle-van"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1 style="color: white;">Golden Valley Transit</h1>
+                    </div>
                 </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Solutions</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="index.html#brokers" class="hover:text-white">For Brokers</a></li>
-                        <li><a href="index.html#providers" class="hover:text-white">For Providers</a></li>
-                        <li><a href="index.html#healthcare" class="hover:text-white">For Healthcare</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Company</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="pricing.html" class="hover:text-white">Pricing</a></li>
-                        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
-                        <li><a href="privacy.html" class="hover:text-white">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Contact</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><i class="fas fa-envelope mr-2"></i>info@nemtsystem.com</li>
-                        <li><i class="fas fa-phone mr-2"></i>(661) 555-0123</li>
-                    </ul>
-                </div>
+                <p>Providing professional, compassionate non-emergency medical transportation services throughout Kern County since 2010.</p>
             </div>
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 NEMT System. All rights reserved. Powered by My IT Copilot.</p>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="index.html#services">Services</a>
+                <a href="about.html">About Us</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="privacy.html">Privacy Policy</a>
             </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-phone"></i> (877) 378-NEMT</p>
+                <p><i class="fas fa-envelope"></i> info@goldenvalleytransit.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Bakersfield, CA 93301</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Golden Valley Transit. All rights reserved. | Licensed & Insured NEMT Provider</p>
         </div>
     </footer>
 </body>
