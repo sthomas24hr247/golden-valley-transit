@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Golden Valley Transit | Professional Medical Transportation</title>
+    <meta name="description" content="Learn about Golden Valley Transit - Bakersfield's trusted non-emergency medical transportation provider serving Kern County since 2010.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+        
+        .logo-text span {
+            font-size: 0.75rem;
+            color: #667eea;
+            font-weight: 500;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            padding: 140px 2rem 80px;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Content Sections */
+        .section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            color: #667eea;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.875rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Mission Section */
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .mission-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        
+        .mission-card i {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        
+        .mission-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #1a1a2e;
+        }
+        
+        .mission-card p {
+            color: #4a5568;
+        }
+        
+        /* Story Section */
+        .story-section {
+            background: #f8fafc;
+        }
+        
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        .story-text p {
+            color: #4a5568;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .story-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .stat-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .stat-box .number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stat-box .label {
+            color: #4a5568;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        
+        .team-card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+        }
+        
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #667eea;
+        }
+        
+        .team-card-body {
+            padding: 1.5rem;
+        }
+        
+        .team-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 0.25rem;
+        }
+        
+        .team-card .role {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        
+        .team-card p {
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+        
+        /* Values Section */
+        .values-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .values-section .section-title {
+            color: white;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .value-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+        
+        .value-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .value-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        
+        .value-card p {
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+            color: white;
+            padding: 60px 2rem 30px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.75rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-section p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .story-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 60px 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shuttle-van"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Golden Valley Transit</h1>
+                    <span>Professional Medical Transportation</span>
+                </div>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html#services">Services</a>
+                <a href="about.html">About</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="tel:+18773786368" class="cta-button">
+                    <i class="fas fa-phone"></i> Call (877) 378-NEMT
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>About Golden Valley Transit</h1>
+        <p>Providing professional, compassionate non-emergency medical transportation to Bakersfield and Kern County since 2010.</p>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="section">
+        <p class="section-subtitle">Our Mission</p>
+        <h2 class="section-title">Caring Transport for Every Patient</h2>
+        <div class="mission-grid">
+            <div class="mission-card">
+                <i class="fas fa-heart"></i>
+                <h3>Compassionate Care</h3>
+                <p>Every patient deserves dignity and respect. Our trained drivers provide caring assistance from door to door.</p>
+            </div>
+            <div class="mission-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Safety First</h3>
+                <p>Fully licensed and insured vehicles with drivers who complete rigorous safety training and background checks.</p>
+            </div>
+            <div class="mission-card">
+                <i class="fas fa-clock"></i>
+                <h3>Reliability</h3>
+                <p>On-time arrivals matter for medical appointments. Our 97% on-time rate reflects our commitment to punctuality.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="section story-section">
+        <p class="section-subtitle">Our Story</p>
+        <h2 class="section-title">Serving Kern County Since 2010</h2>
+        <div class="story-content">
+            <div class="story-text">
+                <p>Golden Valley Transit was founded with a simple mission: ensure that every patient in Kern County has reliable access to their medical appointments, regardless of their mobility challenges.</p>
+                <p>What started as a small operation with just two vehicles has grown into a trusted medical transportation provider serving thousands of patients across Bakersfield and the greater Kern County area.</p>
+                <p>Under the medical direction of Dr. Justin DeGuzman and Dr. Neal Johnson, we maintain the highest standards of patient care and safety. Our team understands that medical transportation is healthcare, and we treat it with the same professionalism and compassion.</p>
+            </div>
+            <div class="story-stats">
+                <div class="stat-box">
+                    <div class="number">15+</div>
+                    <div class="label">Years of Service</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">50K+</div>
+                    <div class="label">Rides Completed</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">97%</div>
+                    <div class="label">On-Time Rate</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">24/7</div>
+                    <div class="label">Availability</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="section">
+        <p class="section-subtitle">Leadership</p>
+        <h2 class="section-title">Medical Direction & Oversight</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-card-header">
+                    <div class="team-avatar">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                </div>
+                <div class="team-card-body">
+                    <h3>Dr. Justin DeGuzman</h3>
+                    <p class="role">Medical Director</p>
+                    <p>Providing medical oversight and ensuring our transportation services meet the highest healthcare standards.</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-card-header">
+                    <div class="team-avatar">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                </div>
+                <div class="team-card-body">
+                    <h3>Dr. Neal Johnson</h3>
+                    <p class="role">Medical Director</p>
+                    <p>Ensuring patient safety protocols and medical compliance across all transportation operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="section values-section">
+        <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Our Values</p>
+        <h2 class="section-title">What We Stand For</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <i class="fas fa-hands-helping"></i>
+                <h3>Patient-Centered</h3>
+                <p>Every decision we make starts with what's best for our patients.</p>
+            </div>
+            <div class="value-card">
+                <i class="fas fa-certificate"></i>
+                <h3>Excellence</h3>
+                <p>We strive for excellence in every ride, every interaction.</p>
+            </div>
+            <div class="value-card">
+                <i class="fas fa-handshake"></i>
+                <h3>Integrity</h3>
+                <p>Honest, transparent service you can trust.</p>
+            </div>
+            <div class="value-card">
+                <i class="fas fa-users"></i>
+                <h3>Community</h3>
+                <p>Proud to serve our Kern County neighbors.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo" style="margin-bottom: 1rem;">
+                    <div class="logo-icon">
+                        <i class="fas fa-shuttle-van"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1 style="color: white;">Golden Valley Transit</h1>
+                    </div>
+                </div>
+                <p>Providing professional, compassionate non-emergency medical transportation services throughout Kern County since 2010.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="index.html#services">Services</a>
+                <a href="about.html">About Us</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-phone"></i> (877) 378-NEMT</p>
+                <p><i class="fas fa-envelope"></i> info@goldenvalleytransit.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Bakersfield, CA 93301</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Golden Valley Transit. All rights reserved. | Licensed & Insured NEMT Provider</p>
+        </div>
+    </footer>
+</body>
+</html>
