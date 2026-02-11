@@ -41,6 +41,9 @@ async function startServer() {
   const app = express();
   const httpServer = http.createServer(app);
 
+  // Trust proxy for Azure Container Apps (required for rate limiting behind load balancer)
+  app.set('trust proxy', 1);
+
   // Initialize Azure SQL
   try {
     await getPool();
@@ -52,7 +55,7 @@ async function startServer() {
   app.use(helmet({ contentSecurityPolicy: isDevelopment ? false : undefined, crossOriginEmbedderPolicy: isDevelopment ? false : undefined }));
   app.use(compression());
   
-  const corsOrigins = process.env.CORS_ORIGINS?.split(',') || ['http://localhost:3000', 'http://localhost:5173', 'https://uishealth.com'];
+  const corsOrigins = process.env.CORS_ORIGINS?.split(',') || ['http://localhost:3000', 'http://localhost:5173', 'https://uishealth.com', 'https://app.uishealth.com', 'https://lemon-ground-032413110.3.azurestaticapps.net'];
   app.use(cors({ origin: isDevelopment ? true : corsOrigins, credentials: true }));
   
   app.use(rateLimit({ windowMs: 60000, max: 100, message: { error: 'Too many requests' }, standardHeaders: true, legacyHeaders: false }));
@@ -129,20 +132,15 @@ async function startServer() {
       const practiceId = 
         (req.headers['x-practice-id'] as string) || 
         authReq.user?.practiceId || 
-        (isDevelopment ? 'mock-practice' : undefined);
+        (isDevelopment ? 'mock-practice' : 'demo-practice');
       
       let adapter;
-      if (practiceId) {
-        try {
-          adapterManager.registerPractice({ practiceId, pmsType: 'MOCK' as any, credentials: {} });
-          adapter = await adapterManager.getAdapter(practiceId);
-        } catch {
-          adapterManager.registerPractice({ practiceId, pmsType: 'MOCK' as any, credentials: {} });
-          adapter = await adapterManager.getAdapter(practiceId);
-        }
-      } else {
-        adapterManager.registerPractice({ practiceId: 'default', pmsType: 'MOCK' as any, credentials: {} });
-        adapter = await adapterManager.getAdapter('default');
+      try {
+        adapterManager.registerPractice({ practiceId, pmsType: 'MOCK' as any, credentials: {} });
+        adapter = await adapterManager.getAdapter(practiceId);
+      } catch {
+        adapterManager.registerPractice({ practiceId, pmsType: 'MOCK' as any, credentials: {} });
+        adapter = await adapterManager.getAdapter(practiceId);
       }
       
       return { 
