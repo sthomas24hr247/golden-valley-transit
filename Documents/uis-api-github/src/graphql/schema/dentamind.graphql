@@ -1,0 +1,195 @@
+# =============================================================================
+# DENTAMIND ANALYTICS - GraphQL Schema Extension
+# =============================================================================
+# Add this file to: src/graphql/schema/dentamind.graphql
+# =============================================================================
+
+# =============================================================================
+# DENTAMIND TYPES
+# =============================================================================
+
+"""
+Dashboard KPI statistics
+"""
+type DashboardStats {
+  totalRevenue: Float!
+  revenueChange: Float!
+  activePatients: Int!
+  patientChange: Float!
+  appointmentsToday: Int!
+  treatmentAcceptance: Float!
+  noShowRate: Float!
+  pendingTreatments: Int!
+}
+
+"""
+Monthly revenue metrics for charts
+"""
+type RevenueMetric {
+  id: ID!
+  date: String!
+  production: Float!
+  collections: Float!
+  adjustments: Float!
+  newPatients: Int!
+  totalAppointments: Int!
+  cancelledAppointments: Int!
+  treatmentAcceptanceRate: Float!
+}
+
+"""
+Treatment breakdown by category
+"""
+type TreatmentBreakdown {
+  category: String!
+  count: Int!
+  revenue: Float!
+}
+
+"""
+Patient with Dentamind computed fields
+"""
+type DentamindPatient {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String
+  phone: String
+  dateOfBirth: String
+  gender: String
+  insuranceProvider: String
+  status: String!
+  balance: Float
+  address: String
+  lastVisit: String
+  nextAppointment: String
+  createdAt: String
+}
+
+"""
+Appointment with denormalized patient/provider names
+"""
+type DentamindAppointment {
+  id: ID!
+  patientId: ID!
+  patientName: String!
+  type: String
+  status: String!
+  date: String!
+  time: String!
+  duration: Int
+  provider: String
+  notes: String
+  createdAt: String
+}
+
+"""
+Treatment (from procedures) with patient/provider names
+"""
+type DentamindTreatment {
+  id: ID!
+  patientId: ID!
+  patientName: String!
+  name: String
+  code: String
+  category: String
+  status: String!
+  cost: Float
+  insuranceCoverage: Float
+  patientPaid: Float
+  date: String
+  provider: String
+  toothNumber: String
+  surface: String
+  createdAt: String
+}
+
+# =============================================================================
+# DENTAMIND INPUTS
+# =============================================================================
+
+input DentamindPatientInput {
+  firstName: String!
+  lastName: String!
+  email: String
+  phone: String
+  dateOfBirth: String
+  gender: String
+  insuranceProvider: String
+  status: String
+  address: String
+}
+
+input DentamindAppointmentInput {
+  patientId: ID!
+  providerId: ID!
+  type: String!
+  dateTime: String!
+  duration: Int
+  notes: String
+}
+
+input DentamindTreatmentInput {
+  patientId: ID!
+  providerId: ID!
+  description: String!
+  code: String
+  category: String
+  fee: Float!
+  toothNumber: String
+  surface: String
+}
+
+# =============================================================================
+# EXTEND QUERY TYPE
+# =============================================================================
+
+extend type Query {
+  # Dashboard Analytics
+  dashboardStats: DashboardStats!
+  revenueMetrics(months: Int): [RevenueMetric!]!
+  treatmentBreakdown: [TreatmentBreakdown!]!
+  
+  # Dentamind-format queries (with computed fields)
+  recentAppointments(limit: Int): [DentamindAppointment!]!
+  todaysAppointments: [DentamindAppointment!]!
+  
+  dentamindPatients(
+    status: String
+    search: String
+    limit: Int
+    offset: Int
+  ): [DentamindPatient!]!
+  
+  dentamindPatient(id: ID!): DentamindPatient
+  
+  dentamindAppointments(
+    status: String
+    date: String
+    limit: Int
+    offset: Int
+  ): [DentamindAppointment!]!
+  
+  dentamindTreatments(
+    status: String
+    category: String
+    patientId: ID
+    limit: Int
+    offset: Int
+  ): [DentamindTreatment!]!
+}
+
+# =============================================================================
+# EXTEND MUTATION TYPE
+# =============================================================================
+
+extend type Mutation {
+  createDentamindPatient(input: DentamindPatientInput!): DentamindPatient!
+  deleteDentamindPatient(id: ID!): Boolean!
+  
+  createDentamindAppointment(input: DentamindAppointmentInput!): DentamindAppointment!
+  deleteDentamindAppointment(id: ID!): Boolean!
+  
+  createDentamindTreatment(input: DentamindTreatmentInput!): DentamindTreatment!
+  deleteDentamindTreatment(id: ID!): Boolean!
+}
